@@ -46,7 +46,20 @@ function render() {
     var currentName = globalNames[i];
 
     var li = document.createElement('li');
-    li.textContent = currentName;
+    
+    var button = document.createElement('button');
+    var iconDelete = document.createElement('i');
+    iconDelete.classList.add('material-icons');
+    iconDelete.textContent = 'delete';
+    button.classList.add('deleteButton');
+
+    button.appendChild(iconDelete);
+    
+    var span = document.createElement('span');
+    span.textContent = currentName;
+    
+    li.appendChild(button);
+    li.appendChild(span);
     ul.appendChild(li);
   }
 
