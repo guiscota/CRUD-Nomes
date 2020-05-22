@@ -37,6 +37,26 @@ function activateInput() {
 }
 
 function render() {
+  function createDelletButton(index) {
+    function deleteName() {
+      globalNames.splice(index, 1); // Eclui o elemento do vetor na posição index, exclui apenas 1
+      
+      render();
+    }
+
+    var button = document.createElement('button');
+    var iconDelete = document.createElement('i');
+    iconDelete.classList.add('material-icons');
+    iconDelete.textContent = 'delete';
+    button.classList.add('deleteButton');
+    button.appendChild(iconDelete);
+
+    button.addEventListener('click', deleteName);
+
+    return button;
+  }
+
+
   var divNames = document.querySelector('#names');
   divNames.innerHTML = '';
 
@@ -46,14 +66,8 @@ function render() {
     var currentName = globalNames[i];
 
     var li = document.createElement('li');
-    
-    var button = document.createElement('button');
-    var iconDelete = document.createElement('i');
-    iconDelete.classList.add('material-icons');
-    iconDelete.textContent = 'delete';
-    button.classList.add('deleteButton');
-
-    button.appendChild(iconDelete);
+  
+    var button = createDelletButton(i);
     
     var span = document.createElement('span');
     span.textContent = currentName;
